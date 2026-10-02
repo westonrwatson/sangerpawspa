@@ -1,0 +1,24 @@
+---
+import LegalPage from "../components/LegalPage.astro";
+import { site } from "../data/site";
+---
+
+<LegalPage
+  title="Accessibility"
+  description="How to get help if a page on The Paw Spa website is difficult to use."
+  lede="If a page is hard to use, call and we will help."
+>
+  <div>
+    <h2>What we aim for</h2>
+    <p>
+      {site.name} wants this website to work with a keyboard, a screen reader, and a phone. Pages use text for the important information, and controls are meant to be clear without a mouse.
+    </p>
+  </div>
+
+  <div>
+    <h2>If something gets in the way</h2>
+    <p>
+      Call <a href={site.phoneHref}>{site.phoneDisplay}</a> and tell us which page you were on. We will help you with the visit, the prices, or whatever you needed from the site, and we will look at the problem.
+    </p>
+  </div>
+</LegalPage>

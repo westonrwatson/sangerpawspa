@@ -1,0 +1,15 @@
+---
+import { closingFor, site } from "../data/site";
+
+const line = closingFor(Astro.url.pathname);
+---
+
+<section class="close">
+  <div class="close-inner">
+    <h2>{line.title}</h2>
+    <p>{line.text}</p>
+    <div class="cta-row">
+      <a class="pill" href={site.bookHref}>Book a visit</a>
+    </div>
+  </div>
+</section>

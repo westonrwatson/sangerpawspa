@@ -1,0 +1,163 @@
+---
+import Frame from "../components/Frame.astro";
+import Layout from "../layouts/Layout.astro";
+import { addOns, colorPrices, groomingPrices, spaPrice } from "../data/site";
+
+const sizeRows = groomingPrices[0].rows;
+
+const addOnGroups = [
+  {
+    title: "Coat",
+    names: [
+      "De-Shed Treatment",
+      "Dematting",
+      "Extra Brushing",
+      "Flea & Tick Shampoo",
+      "Medicated Shampoo",
+      "Conditioning Treatment",
+      "Specialty Mask",
+    ],
+  },
+  {
+    title: "Nails, ears, and teeth",
+    names: ["Nail Trim Only", "Nail Trim & Grind", "Ear Cleaning", "Ear Plucking", "Teeth Brushing"],
+  },
+  {
+    title: "Finish",
+    names: ["Blueberry Facial", "Nose & Paw Balm", "Bow or Bandana"],
+  },
+].map((group) => ({
+  title: group.title,
+  items: group.names.map((name) => addOns.find((item) => item.name === name)!),
+}));
+---
+
+<Layout
+  title="Services & Pricing"
+  description="Grooming prices at The Paw Spa in Sanger, from baths and full grooms to the spa upgrade, add-ons, and creative color."
+>
+  <section class="section">
+    <div class="wrap">
+      <table class="price-table">
+        <caption class="vh">Grooming prices by size</caption>
+        <thead>
+          <tr>
+            <th scope="col">Size</th>
+            {
+              groomingPrices.map((group) => (
+                <th scope="col" id={group.id} class={group.id === "full-groom" ? "price-feature" : undefined}>
+                  <span class="price-name">
+                    {group.name}
+                    {group.id === "full-groom" && <span class="price-star" aria-hidden="true">★</span>}
+                  </span>
+                  <span class="price-note">{group.note}</span>
+                </th>
+              ))
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {
+            sizeRows.map((size, index) => (
+              <tr>
+                <th scope="row">
+                  <span class="size">{size.size}</span>
+                  <span class="weight">{size.weight}</span>
+                </th>
+                {groomingPrices.map((group) => (
+                  <td class={group.id === "full-groom" ? "price-feature" : undefined}>
+                    <span class="price-name">
+                      {group.name}
+                      {group.id === "full-groom" && <span class="price-star" aria-hidden="true">★</span>}
+                    </span>
+                    <span class="menu-price">{group.rows[index].price}</span>
+                  </td>
+                ))}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="color-block" id="creative-color">
+        <div>
+          <div class="section-head">
+            <h2>Creative Color</h2>
+            <p>Pet-safe color. Consultation required. Price varies by size, coat, and design.</p>
+          </div>
+          <ul class="menu">
+            {
+              colorPrices.map((item) => (
+                <li>
+                  <span class="size">{item.name}</span>
+                  <span class="menu-price">{item.price}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="color-photos">
+          <Frame
+            ratio="portrait"
+            label="A styled groom at The Paw Spa"
+            src="/images/groom-yorkie-flower.jpg"
+            position="center 42%"
+          />
+          <Frame
+            ratio="portrait"
+            label="A spaniel after a groom at The Paw Spa"
+            src="/images/groom-spaniel.jpg"
+            position="center 28%"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spa-note" id={spaPrice.id}>
+    <div class="wrap">
+      <Frame
+        ratio="fill"
+        label="A finished groom at The Paw Spa"
+        src="/images/groom-goldendoodle.jpg"
+        position="center 28%"
+      />
+      <div class="spa-copy">
+        <h2>{spaPrice.name}</h2>
+        <p>{spaPrice.detail}</p>
+        <p>{spaPrice.note}</p>
+        <p class="spa-price">{spaPrice.price}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" id="add-ons">
+        <h2>Add-ons</h2>
+        <p>Optional extras. Dematting starts at the price shown and depends on the coat.</p>
+      </div>
+      <div class="add-on-grid">
+        {
+          addOnGroups.map((group) => (
+            <article class="add-on-group">
+              <h3>{group.title}</h3>
+              <ul class="menu">
+                {group.items.map((item) => (
+                  <li>
+                    <span class="size">{item.name}</span>
+                    <span class="menu-price">{item.price}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

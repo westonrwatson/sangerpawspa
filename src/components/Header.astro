@@ -1,0 +1,33 @@
+---
+import { nav, site } from "../data/site";
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+function isCurrent(href: string) {
+  if (href === "/") return path === "/";
+  return path === href;
+}
+---
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-lockup">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">{site.name}</span>
+      </span>
+      <span class="brand-meta">Pet grooming · Sanger</span>
+    </a>
+  </div>
+</header>
+<nav class="nav" aria-label="Primary">
+  <div class="wrap nav-inner">
+    {
+      nav.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+          {item.label}
+        </a>
+      ))
+    }
+  </div>
+</nav>

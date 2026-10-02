@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Frame from "../components/Frame.astro";
+
+const shots = [
+  {
+    label: "A goldendoodle after a groom",
+    src: "/images/groom-goldendoodle.jpg",
+    position: "center 30%",
+  },
+  {
+    label: "A spaniel after a groom",
+    src: "/images/groom-spaniel.jpg",
+    position: "center 28%",
+  },
+  {
+    label: "A poodle after a groom",
+    src: "/images/groom-poodle.jpg",
+    position: "center 24%",
+  },
+  {
+    label: "A Yorkshire terrier after a groom",
+    src: "/images/groom-yorkie-flower.jpg",
+    position: "center 42%",
+  },
+  {
+    label: "A doodle ready to head home",
+    src: "/images/groom-cream.jpg",
+    position: "center 40%",
+  },
+  {
+    label: "A Pomeranian after a groom",
+    src: "/images/groom-pom.jpg",
+    position: "center 32%",
+  },
+  {
+    label: "A bath at The Paw Spa",
+    src: "/images/groom-bath.jpg",
+    position: "center 32%",
+  },
+];
+---
+
+<Layout
+  title="Gallery"
+  description="Photos of grooms and the salon at The Paw Spa in Sanger, California."
+>
+  <section class="section">
+    <div class="wrap gallery-grid">
+      {
+        shots.map((shot) => (
+          <figure>
+            <Frame ratio="square" label={shot.label} src={shot.src} position={shot.position} />
+            <figcaption>{shot.label}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

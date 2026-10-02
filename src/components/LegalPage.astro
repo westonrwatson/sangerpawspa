@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "./PageIntro.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  lede: string;
+}
+
+const { title, description, lede } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <PageIntro title={title} lede={lede} />
+  <section class="section">
+    <div class="wrap legal-copy">
+      <slot />
+    </div>
+  </section>
+</Layout>

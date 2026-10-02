@@ -1,0 +1,20 @@
+---
+interface Props {
+  label?: string;
+  ratio?: "wide" | "landscape" | "portrait" | "square" | "fill";
+  src?: string;
+  position?: string;
+}
+
+const { label = "Image", ratio = "landscape", src, position } = Astro.props;
+---
+
+<div class:list={["ph", ratio]}>
+  {
+    src ? (
+      <img src={src} alt={label} style={position ? `object-position: ${position}` : undefined} />
+    ) : (
+      <span>{label}</span>
+    )
+  }
+</div>

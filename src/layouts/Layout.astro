@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const isHome = title === "Home";
+const pageTitle = isHome ? "The Paw Spa · Pet Grooming in Sanger, CA" : `${title} · The Paw Spa`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{pageTitle}</title>
+  </head>
+  <body class:list={[isHome && "home"]}>
+    <Header />
+    <main id="content">
+      <slot />
+      <CtaBand />
+    </main>
+    <Footer />
+    <script is:inline>
+      (function () {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var rise = ".expect .step-grid article, .faq details, .team-grid figure, .add-on-group, .close-inner, .owner-grid, .feature .stack, .price-table, .color-block, .footer-grid";
+        var fade = ".home-gallery a, .gallery-grid figure, .feature .ph, .spa-note .ph, .color-photos .ph";
+        var nodes = [];
+        document.querySelectorAll(rise).forEach(function (el) {
+          el.classList.add("reveal");
+          nodes.push(el);
+        });
+        document.querySelectorAll(fade).forEach(function (el) {
+          el.classList.add("reveal-fade");
+          nodes.push(el);
+        });
+        var edge = window.innerHeight * 0.92;
+        var pending = [];
+        nodes.forEach(function (el) {
+          var box = el.getBoundingClientRect();
+          if (box.top < edge && box.bottom > 0) el.classList.add("is-in");
+          else pending.push(el);
+        });
+        if (!pending.length || !("IntersectionObserver" in window)) {
+          pending.forEach(function (el) {
+            el.classList.add("is-in");
+          });
+          return;
+        }
+        var watcher = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-in");
+              watcher.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+        );
+        pending.forEach(function (el) {
+          watcher.observe(el);
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+---
+import LegalPage from "../components/LegalPage.astro";
+import { site } from "../data/site";
+---
+
+<LegalPage
+  title="Terms"
+  description="Terms for using The Paw Spa website, a pet grooming salon in Sanger, California."
+  lede="The simple terms for using this website."
+>
+  <p>Updated October 2, 2026.</p>
+
+  <div>
+    <h2>Using the site</h2>
+    <p>
+      You may read these pages to learn about {site.name} and to request a visit. Please use the site in a way that does not interrupt it for anyone else.
+    </p>
+  </div>
+
+  <div>
+    <h2>Appointments</h2>
+    <p>
+      A request on this site holds a time only once the salon confirms it. The groom you book is the service described on the Services & Pricing page. Coat, size, and the condition of the pet can change what the visit includes.
+    </p>
+  </div>
+
+  <div>
+    <h2>Not veterinary care</h2>
+    <p>
+      Grooming is not a medical service. Nothing on this site is veterinary advice. If a pet is ill or injured, contact a veterinarian.
+    </p>
+  </div>
+
+  <div>
+    <h2>Photos and words</h2>
+    <p>
+      The name {site.name}, the writing, and the photographs on this site belong to the salon. You may share a link to a page. Please do not copy the site and present it as your own.
+    </p>
+    <p>
+      If a photo of your pet is on the site and you would like it taken down, call <a href={site.phoneHref}>{site.phoneDisplay}</a>.
+    </p>
+  </div>
+
+  <div>
+    <h2>Other sites</h2>
+    <p>
+      Links to Instagram, a booking scheduler, or any other site leave {site.name}. Those sites have their own terms.
+    </p>
+  </div>
+
+  <div>
+    <h2>The site as it is</h2>
+    <p>
+      We keep the pages as accurate as we can. Prices and services can change, and the Services & Pricing page is the one that lists dollar amounts. The site is provided as it is, without a promise that every page will always be available.
+    </p>
+  </div>
+</LegalPage>

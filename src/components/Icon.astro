@@ -1,0 +1,72 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+{
+  name === "paw" && (
+    <svg viewBox="0 0 120 120" fill="currentColor" aria-hidden="true">
+      <circle cx="25" cy="53" r="13.6" />
+      <circle cx="45.5" cy="30" r="12.6" />
+      <circle cx="74.5" cy="30" r="12.6" />
+      <circle cx="95" cy="53" r="13.6" />
+      <path d="M38 70C30 62 22 72 26 86C30 104 42 114 60 114C78 114 90 104 94 86C98 72 90 62 82 70C70 80 50 80 38 70Z" />
+    </svg>
+  )
+}
+{
+  name === "cut" && (
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+      <circle cx="9" cy="9" r="3.2" />
+      <circle cx="9" cy="23" r="3.2" />
+      <path d="M12 11.5 26 24M12 20.5 26 8" />
+    </svg>
+  )
+}
+{
+  name === "spark" && (
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M16 3l1.8 7.2L25 12l-7.2 1.8L16 21l-1.8-7.2L7 12l7.2-1.8L16 3z" />
+      <path d="M25 18l.8 3.2L29 22l-3.2.8L25 26l-.8-3.2L21 22l3.2-.8L25 18z" />
+    </svg>
+  )
+}
+{
+  name === "heart" && (
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M16 27s-9.5-6.1-12.2-11.2C2 12.4 3.2 8 7.4 7.2 10.2 6.6 12.6 8 16 11.2 19.4 8 21.8 6.6 24.6 7.2 28.8 8 30 12.4 28.2 15.8 25.5 20.9 16 27 16 27z" />
+    </svg>
+  )
+}
+{
+  name === "home" && (
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M4 14.5 16 5l12 9.5V27H20v-7h-8v7H4V14.5z" />
+    </svg>
+  )
+}
+{
+  name === "chat" && (
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M7 8.5h18v12H13l-5 4.2V20.5H7z" />
+    </svg>
+  )
+}
+{
+  name === "clock" && (
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="16" cy="16" r="8.5" />
+      <path d="M16 11.5V16.2l3.2 2" />
+    </svg>
+  )
+}
+{
+  name === "soft" && (
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M16 5.5 17.7 13.1 25.5 16 17.7 18.9 16 26.5 14.3 18.9 6.5 16 14.3 13.1Z" />
+    </svg>
+  )
+}

@@ -1,0 +1,67 @@
+---
+import LegalPage from "../components/LegalPage.astro";
+import { site } from "../data/site";
+---
+
+<LegalPage
+  title="Privacy"
+  description="How The Paw Spa handles information when you visit the website, call, or book a groom in Sanger, California."
+  lede="What this site collects, and what we do with it."
+>
+  <p>Updated October 2, 2026.</p>
+
+  <div>
+    <h2>Who we are</h2>
+    <p>
+      {site.name} is a pet grooming salon at {site.location}. This notice covers the website. If you have a question about it, call <a href={site.phoneHref}>{site.phoneDisplay}</a>.
+    </p>
+  </div>
+
+  <div>
+    <h2>Information this site collects</h2>
+    <p>
+      The pages themselves do not ask you to create an account or fill out a form. If you call, or if you book a visit through a scheduler linked from this site, we receive the details you choose to share so we can arrange the groom. That may include your name, phone number, and notes about your pet.
+    </p>
+    <p>
+      Like most websites, the server and your browser may exchange a basic visit record, such as the page you opened and the browser you used. We do not use that record to build a profile of you.
+    </p>
+  </div>
+
+  <div>
+    <h2>How we use it</h2>
+    <p>
+      We use contact and booking details to schedule a visit, care for the pet, and answer a question you asked. We do not sell personal information. We do not share it for other companies’ advertising.
+    </p>
+  </div>
+
+  <div>
+    <h2>Who else may receive it</h2>
+    <p>
+      The site loads type from Google Fonts. When your browser requests those files, Google may receive your IP address. Opening Instagram leaves this site and follows Instagram’s own policy.
+    </p>
+    <p>
+      If booking is handled by a separate scheduler, that service receives what you submit there and has its own privacy notice.
+    </p>
+  </div>
+
+  <div>
+    <h2>Cookies and Do Not Track</h2>
+    <p>
+      This site does not set advertising or analytics cookies. Your browser may store ordinary files needed to load the pages and the fonts. We do not track you across other websites, and we do not change the site’s behavior in response to a Do Not Track signal.
+    </p>
+  </div>
+
+  <div>
+    <h2>Children</h2>
+    <p>
+      This site is for pet owners. It is not directed at children under 13, and we do not knowingly collect their personal information.
+    </p>
+  </div>
+
+  <div>
+    <h2>Changes</h2>
+    <p>
+      If this notice changes, the updated date at the top of the page will change with it. The current version is always the one published here.
+    </p>
+  </div>
+</LegalPage>
