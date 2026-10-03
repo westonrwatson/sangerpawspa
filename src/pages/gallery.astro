@@ -31,10 +31,6 @@ const shots = [
     label: "A Pomeranian after a groom",
     src: "/images/groom-pom.jpg",
   },
-  {
-    label: "A bath at The Paw Spa",
-    src: "/images/groom-bath.jpg",
-  },
 ];
 ---
 
@@ -49,7 +45,6 @@ const shots = [
         shots.map((shot) => (
           <figure>
             <Frame ratio="square" label={shot.label} src={shot.src} />
-            <figcaption>{shot.label}</figcaption>
           </figure>
         ))
       }
