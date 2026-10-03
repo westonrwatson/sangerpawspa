@@ -1,7 +1,10 @@
 ---
 import Frame from "../components/Frame.astro";
 import Layout from "../layouts/Layout.astro";
-import { addOns, colorPrices, groomingPrices, spaPrice } from "../data/site";
+import PageIntro from "../components/PageIntro.astro";
+import { addOns, colorPrices, groomingPrices, heroFor, spaPrice } from "../data/site";
+
+const hero = heroFor("/pricing");
 
 const sizeRows = groomingPrices[0].rows;
 
@@ -34,8 +37,9 @@ const addOnGroups = [
 
 <Layout
   title="Services & Pricing"
-  description="Grooming prices at The Paw Spa in Sanger, from baths and full grooms to the spa upgrade, add-ons, and creative color."
+  description={hero.description}
 >
+  <PageIntro title={hero.title} titleEm={hero.titleEm} lede={hero.lede} ledeTwoLines />
   <section class="section">
     <div class="wrap">
       <table class="price-table">
@@ -81,13 +85,13 @@ const addOnGroups = [
     </div>
   </section>
 
-  <section class="section">
+  <section class="section team-section">
     <div class="wrap">
       <div class="color-block" id="creative-color">
         <div>
           <div class="section-head">
             <h2>Creative Color</h2>
-            <p>Pet-safe color. Consultation required. Price varies by size, coat, and design.</p>
+            <p>Pet-safe dye applied after a consult. Final price depends on size, coat, and how much color you want.</p>
           </div>
           <ul class="menu">
             {
@@ -139,7 +143,7 @@ const addOnGroups = [
     <div class="wrap">
       <div class="section-head" id="add-ons">
         <h2>Add-ons</h2>
-        <p>Optional extras. Dematting starts at the price shown and depends on the coat.</p>
+        <p>Stack these onto any bath or groom. Dematting is priced from $15 depending on how tight the coat is.</p>
       </div>
       <div class="add-on-grid">
         {

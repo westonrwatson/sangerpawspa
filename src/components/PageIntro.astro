@@ -1,15 +1,25 @@
 ---
 interface Props {
   title: string;
+  titleEm?: string;
   lede: string;
+  ledeTwoLines?: boolean;
 }
 
-const { title, lede } = Astro.props;
+const { title, titleEm, lede, ledeTwoLines = false } = Astro.props;
 ---
 
 <section class="page-intro">
-  <div class="wrap intro-copy">
-    <h1>{title}</h1>
+  <div class:list={["wrap intro-copy", ledeTwoLines && "intro-copy--lede-two-lines"]}>
+    <h1>
+      {title}
+      {titleEm && (
+        <>
+          {" "}
+          <em>{titleEm}</em>
+        </>
+      )}
+    </h1>
     <p class="lede">{lede}</p>
   </div>
 </section>

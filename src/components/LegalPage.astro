@@ -1,18 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "./PageIntro.astro";
+import { heroFor } from "../data/site";
 
 interface Props {
   title: string;
-  description: string;
-  lede: string;
 }
 
-const { title, description, lede } = Astro.props;
+const { title } = Astro.props;
+const hero = heroFor(Astro.url.pathname);
 ---
 
-<Layout title={title} description={description}>
-  <PageIntro title={title} lede={lede} />
+<Layout title={title} description={hero.description}>
+  <PageIntro title={hero.title} titleEm={hero.titleEm} lede={hero.lede} />
   <section class="section">
     <div class="wrap legal-copy">
       <slot />

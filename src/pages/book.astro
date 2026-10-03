@@ -1,0 +1,104 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import { groomingPrices, heroFor, site } from "../data/site";
+
+const hero = heroFor("/book");
+
+const netlifyForm = site.bookFormAction === "/book";
+const serviceOptions = [...groomingPrices.map((g) => g.name), "Not sure yet"];
+---
+
+<Layout
+  title="Book"
+  description={hero.description}
+>
+  <PageIntro title={hero.title} titleEm={hero.titleEm} lede={hero.lede} />
+  <section class="section">
+    <div class="wrap booking-wrap">
+      <form
+        class="booking-form"
+        method="POST"
+        action={site.bookFormAction}
+        name={site.bookFormName}
+        data-netlify={netlifyForm ? "true" : undefined}
+        data-netlify-honeypot={netlifyForm ? "company" : undefined}
+      >
+        {netlifyForm && <input type="hidden" name="form-name" value={site.bookFormName} />}
+
+        <p class="form-honeypot" aria-hidden="true">
+          <label>
+            Company
+            <input name="company" tabindex="-1" autocomplete="off" />
+          </label>
+        </p>
+
+        <div class="form-field">
+          <label for="book-name">Your name</label>
+          <input id="book-name" name="name" type="text" autocomplete="name" required />
+        </div>
+
+        <div class="form-field">
+          <label for="book-phone">Phone</label>
+          <input id="book-phone" name="phone" type="tel" autocomplete="tel" required />
+        </div>
+
+        <div class="form-field">
+          <label for="book-email">Email <span class="form-optional">(optional)</span></label>
+          <input id="book-email" name="email" type="email" autocomplete="email" />
+        </div>
+
+        <div class="form-field">
+          <label for="book-dog">Dog’s name</label>
+          <input id="book-dog" name="dog_name" type="text" required />
+        </div>
+
+        <div class="form-field">
+          <label for="book-size">Approximate size</label>
+          <select id="book-size" name="size" required>
+            <option value="">Select…</option>
+            <option value="Small (0–20 lbs)">Small (0–20 lbs)</option>
+            <option value="Medium (21–40 lbs)">Medium (21–40 lbs)</option>
+            <option value="Large (41–60 lbs)">Large (41–60 lbs)</option>
+            <option value="X-Large (61–80 lbs)">X-Large (61–80 lbs)</option>
+            <option value="XX-Large (81–100+ lbs)">XX-Large (81–100+ lbs)</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="book-service">Service</label>
+          <select id="book-service" name="service" required>
+            <option value="">Select…</option>
+            {
+              serviceOptions.map((name) => (
+                <option value={name}>{name}</option>
+              ))
+            }
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="book-when">Preferred days or times</label>
+          <input
+            id="book-when"
+            name="preferred_times"
+            type="text"
+            placeholder="e.g. weekday mornings, after 3pm"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="book-notes">Notes <span class="form-optional">(coat, behavior, add-ons)</span></label>
+          <textarea id="book-notes" name="notes" rows="5"></textarea>
+        </div>
+
+        <button class="pill" type="submit">Send request</button>
+      </form>
+
+      <p class="booking-aside">
+        Prefer to talk it through? Call <a href={site.phoneHref}>{site.phoneDisplay}</a>.
+      </p>
+    </div>
+  </section>
+</Layout>

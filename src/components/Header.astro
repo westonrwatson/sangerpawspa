@@ -2,6 +2,8 @@
 import { nav, site } from "../data/site";
 
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const navLeft = nav.slice(0, 2);
+const navRight = nav.slice(2);
 
 function isCurrent(href: string) {
   if (href === "/") return path === "/";
@@ -10,24 +12,35 @@ function isCurrent(href: string) {
 ---
 
 <header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="/">
-      <span class="brand-lockup">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name">{site.name}</span>
-      </span>
-      <span class="brand-meta">Pet grooming · Sanger</span>
-    </a>
+  <div class="wrap">
+    <nav class="header-bar" aria-label="Primary">
+      <a class="brand" href="/">
+        <span class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name">{site.name}</span>
+        </span>
+        <span class="brand-meta">{site.tagline}</span>
+      </a>
+      <div class="header-links">
+        <div class="nav-group nav-group-start">
+          {
+            navLeft.map((item) => (
+              <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+        <div class="nav-group nav-group-end">
+          {
+            navRight.map((item) => (
+              <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </nav>
   </div>
 </header>
-<nav class="nav" aria-label="Primary">
-  <div class="wrap nav-inner">
-    {
-      nav.map((item) => (
-        <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
-          {item.label}
-        </a>
-      ))
-    }
-  </div>
-</nav>
