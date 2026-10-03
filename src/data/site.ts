@@ -4,7 +4,7 @@ export const site = {
   phoneDisplay: "559-612-1424",
   phoneHref: "tel:+15596121424",
   bookHref: "/book",
-  bookLabel: "Book appointment",
+  bookLabel: "Book Appointment",
   /** POST target: `/book` for Netlify Forms on that page, or e.g. a Formspree URL */
   bookFormAction: "/book",
   bookFormName: "booking",
@@ -59,7 +59,7 @@ const pageCtaByPath: Record<string, PageCta> = {
     title: "Your dog’s next visit",
     titleEm: "starts here",
     text: "A few details on the form are enough to get started. Tell us size, coat type, and how you want them to look; we’ll confirm the rest with you.",
-    buttonLabel: "Request an appointment",
+    buttonLabel: "Book Appointment",
   },
   "/pricing": {
     title: "Numbers on the page,",
@@ -123,7 +123,7 @@ const pageHeroByPath: Record<string, PageHero> = {
     lede: "A calm, locally owned salon in Sanger. Full grooms, baths, spa upgrades, and creative color when you want something special.",
     description:
       "The Paw Spa in Sanger, CA. Full grooms, baths, spa upgrades, and creative color by appointment.",
-    buttonLabel: "Request an appointment",
+    buttonLabel: "Book Appointment",
     buttonHref: "/book",
   },
   "/pricing": {
