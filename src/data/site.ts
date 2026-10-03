@@ -65,7 +65,7 @@ const pageCtaByPath: Record<string, PageCta> = {
     title: "Numbers on the page,",
     titleEm: "details from us",
     text: "Coat condition and add-ons can shift the final price. Share your dog on the booking form and we’ll recommend the right service before anything is set in stone.",
-    buttonLabel: "Ask about your dog",
+    buttonLabel: "Book Appointment",
   },
   "/gallery": {
     title: "Bring a photo",
